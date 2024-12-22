@@ -54,7 +54,7 @@
         android:layout_marginBottom="100dp"
         android:background="@drawable/button_gradient"
         android:fontFamily="fantasy"
-        android:onClick="onClickChange"
+        android:onClick="onClickClose"
         android:paddingHorizontal="16dp"
         android:text="EXIT"
         app:layout_constraintBottom_toBottomOf="parent"
