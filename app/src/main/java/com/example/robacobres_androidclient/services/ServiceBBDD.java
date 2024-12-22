@@ -753,7 +753,7 @@ public class ServiceBBDD {
                     privateCallback.onPrivateCallbackMessages(names);
                     Log.d("API_RESPONSE", "GET SUCCESSFUL");
                 } else if (response.code() == 502) {
-                    privateCallback.onMessage("No Private Messages");
+                    privateCallback.onMessage("There has been an error, are you sure of the name?");
                     Log.d("API_RESPONSE", "Response not successful, code: " + response.code());
                 }else if (response.code() == 506) {
                     privateCallback.onMessage("USER NOT LOGGED IN");

@@ -38,6 +38,9 @@ public class PrivateMessagesActivity extends AppCompatActivity implements Privat
     String selectedOption;
     private Button btnSend;
     private TextView textEnviar;
+    private Button btnIniciar;
+    private TextView personaPerNouChat;
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +54,9 @@ public class PrivateMessagesActivity extends AppCompatActivity implements Privat
         });
         textEnviar=findViewById(R.id.textAEnviar);
         btnSend=findViewById(R.id.btnSend);
-        Spinner spinner = findViewById(R.id.spinner);
+        btnIniciar=findViewById(R.id.btnIniciar);
+        personaPerNouChat=findViewById(R.id.nouChat);
+        spinner = findViewById(R.id.spinner);
         this.names = (List<String>) getIntent().getSerializableExtra("names");
         names.add(0,"Select here who you want to chat with");
         this.userName = getIntent().getStringExtra("userName");
@@ -85,7 +90,27 @@ public class PrivateMessagesActivity extends AppCompatActivity implements Privat
     }
     @Override
     public void onPrivateCallbackNames(List<User> lista){
+        names.clear();
+        for(User u:lista) names.add(u.getName());
+        names.add(0,"Select here who you want to chat with");
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, names);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedOption = parent.getItemAtPosition(position).toString();
+                if(!selectedOption.equals("Select here who you want to chat with")){
+                    Toast.makeText(PrivateMessagesActivity.this, "Selected: " + selectedOption, Toast.LENGTH_SHORT).show();
+                    getMessages(selectedOption);
+                }
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Quan no hi ha cap selecció
+            }
+        });
     }
     @Override
     public void onMessage(String errorMessage){
@@ -105,10 +130,17 @@ public class PrivateMessagesActivity extends AppCompatActivity implements Privat
     }
 
     public void onClickSend1(View view) {
-        serviceREST.postPrivateMessage(this, new ChatIndividual(userName,selectedOption,textEnviar.getText().toString()));
+        if(!selectedOption.equals("Select here who you want to chat with")) serviceREST.postPrivateMessage(this, new ChatIndividual(userName,selectedOption,textEnviar.getText().toString()));
+        else Toast.makeText(PrivateMessagesActivity.this, "Select a user to chat with", Toast.LENGTH_SHORT).show();
     }
 
     public void onClickBotonRetroceder(View view){
         this.finish();
+    }
+
+    public void onClickIniciar(View view) {
+        serviceREST.postPrivateMessage(this, new ChatIndividual(userName,personaPerNouChat.getText().toString().trim(),"Bon dia, vull començar a chatejar"));
+        personaPerNouChat.setText("");
+        serviceREST.getPrivateNames(this);
     }
 }

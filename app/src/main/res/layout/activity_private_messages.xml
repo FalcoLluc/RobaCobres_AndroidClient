@@ -20,6 +20,16 @@
         app:layout_constraintTop_toBottomOf="@+id/recyclerView1" />
 
     <Button
+        android:id="@+id/btnIniciar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickIniciar"
+        android:text="INICIAR"
+        app:layout_constraintBottom_toBottomOf="@+id/nouChat"
+        app:layout_constraintEnd_toStartOf="@+id/botonRetroceder2"
+        app:layout_constraintTop_toTopOf="@+id/nouChat" />
+
+    <Button
         android:id="@+id/botonRetroceder2"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -40,6 +50,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/recyclerView1"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView1" />
+
+    <EditText
+        android:id="@+id/nouChat"
+        android:layout_width="280dp"
+        android:layout_height="48dp"
+        android:fontFamily="fantasy"
+        android:hint="Amb qui vols iniciar un chat?"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView1"
