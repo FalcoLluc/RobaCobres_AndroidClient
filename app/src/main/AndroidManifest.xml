@@ -48,6 +48,9 @@
             android:name=".ForumActivity"
             android:exported="false" />
         <activity
+            android:name=".InsigniasActivity"
+            android:exported="false" />
+        <activity
             android:name=".ChangeCorreoActivity"
             android:exported="false" />
         <activity

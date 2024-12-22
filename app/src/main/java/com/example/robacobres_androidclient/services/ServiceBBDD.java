@@ -7,6 +7,7 @@ import com.example.robacobres_androidclient.callbacks.AuthCallback;
 import com.example.robacobres_androidclient.callbacks.CharacterCallback;
 import com.example.robacobres_androidclient.callbacks.ChargeDataCallback;
 import com.example.robacobres_androidclient.callbacks.ForumCallback;
+import com.example.robacobres_androidclient.callbacks.InsigniasCallback;
 import com.example.robacobres_androidclient.callbacks.ItemCallback;
 import com.example.robacobres_androidclient.callbacks.PrivateCallback;
 import com.example.robacobres_androidclient.callbacks.UserCallback;
@@ -16,6 +17,7 @@ import com.example.robacobres_androidclient.models.ChangePassword;
 import com.example.robacobres_androidclient.models.ChatIndividual;
 import com.example.robacobres_androidclient.models.Forum;
 import com.example.robacobres_androidclient.models.GameCharacter;
+import com.example.robacobres_androidclient.models.Insignia;
 import com.example.robacobres_androidclient.models.Item;
 import com.example.robacobres_androidclient.models.User;
 
@@ -29,6 +31,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
@@ -768,6 +771,56 @@ public class ServiceBBDD {
         });
     }
 
+    public void getInsignias(final InsigniasCallback insigniasCallback, String name) {
+        Call<List<Insignia>> call = serv.getInsignias(name);
+        call.enqueue(new Callback<List<Insignia>>() {
+            @Override
+            public void onResponse(Call<List<Insignia>> call, Response<List<Insignia>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    List<Insignia> insignias = response.body();
+                    insigniasCallback.onInsigniaCallback(insignias);
+                    Log.d("API_RESPONSE", "GET SUCCESSFUL");
+                }else if (response.code() == 506) {
+                    insigniasCallback.onMessage("USER NOT LOGGED IN");
+                    Log.d("API_RESPONSE", "Response not successful, code: " + response.code());
+                }
+                else {
+                    insigniasCallback.onMessage("ERROR");
+                    Log.d("API_RESPONSE", "Response not successful, code: " + response.code());
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Insignia>> call, Throwable t) {
+                Log.e("API_ERROR", "API call failed", t);
+            }
+        });
+    }
+
+    public void putInsignia(final InsigniasCallback insigniasCallback, String name, Insignia insignia) {
+        Call<List<Insignia>> call = serv.putInsignia(name, insignia);
+        call.enqueue(new Callback<List<Insignia>>() {
+            @Override
+            public void onResponse(Call<List<Insignia>> call, Response<List<Insignia>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    List<Insignia> insignias = response.body();
+                    insigniasCallback.onInsigniaCallback(insignias);
+                    Log.d("API_RESPONSE", "Post SUCCESSFUL");
+                } else if (response.code() == 506) {
+                    insigniasCallback.onMessage("USER NOT LOGGED IN");
+                    Log.d("API_RESPONSE", "Response not successful, code: " + response.code());
+                } else {
+                    insigniasCallback.onMessage("ERROR");
+                    Log.d("API_RESPONSE", "Response not successful, code: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Insignia>> call, Throwable t) {
+                Log.e("API_ERROR", "API call failed", t);
+            }
+        });
+
+    }
 }
 
 

@@ -19,6 +19,18 @@
         android:text="Change Password"
         app:layout_constraintBottom_toTopOf="@+id/btn_exit"
         tools:layout_editor_absoluteX="0dp" />
+    <Button
+        android:id="@+id/btn_insignias"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="center"
+        android:background="@drawable/button_gradient"
+        android:fontFamily="fantasy"
+        android:onClick="onClickInsignias"
+        android:paddingHorizontal="16dp"
+        android:text="INSIGNIAS"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/btn_changeCorreo"

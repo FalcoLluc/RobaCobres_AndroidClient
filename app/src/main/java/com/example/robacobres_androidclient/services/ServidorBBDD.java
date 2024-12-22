@@ -4,6 +4,7 @@ import com.example.robacobres_androidclient.models.ChangePassword;
 import com.example.robacobres_androidclient.models.ChatIndividual;
 import com.example.robacobres_androidclient.models.Forum;
 import com.example.robacobres_androidclient.models.GameCharacter;
+import com.example.robacobres_androidclient.models.Insignia;
 import com.example.robacobres_androidclient.models.Item;
 import com.example.robacobres_androidclient.models.User;
 
@@ -103,7 +104,12 @@ public interface ServidorBBDD {
     @GET("store/CharactersUserCanBuy") //ARREGLAR
     Call<List<GameCharacter>> getCharactersUserCanBuy();
 
+    //GetUser
+    @POST("users/{name}/badges") //OK
+    Call<List<Insignia>> getInsignias(@Path("name") String name);
 
+    @POST("users/{name}/save/badges") //OK
+    Call<List<Insignia>> putInsignia(@Path("name") String name, @Body Insignia insignia);
     /*
     //DELETE
     @DELETE("tracks/{id}")

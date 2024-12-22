@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,10 +14,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.robacobres_androidclient.callbacks.InsigniasCallback;
+import com.example.robacobres_androidclient.models.Insignia;
 import com.example.robacobres_androidclient.models.User;
 import com.example.robacobres_androidclient.services.ServiceBBDD;
 
-public class SeeMyDataActivity extends AppCompatActivity {
+import java.util.List;
+
+public class SeeMyDataActivity extends AppCompatActivity implements InsigniasCallback {
 //    EditText actualPassword;
 //    EditText newPassword1;
 //    EditText newPassword2;
@@ -70,5 +75,28 @@ public class SeeMyDataActivity extends AppCompatActivity {
 
     public void onClickClose(View V){
         this.finish();
+    }
+
+    public void onClickInsignias(View V){
+        service.getInsignias(this,user.getName());
+    }
+
+    @Override
+    public void onError(String message){
+
+    }
+
+    @Override
+    public void onInsigniaCallback(List<Insignia> objects) {
+        Intent intent = new Intent(context, InsigniasActivity.class);
+        intent.putExtra("insignias", (java.io.Serializable) objects);
+        intent.putExtra("name", user.getName());
+        context.startActivity(intent);
+
+    }
+
+    @Override
+    public void onMessage(String errorMessage){
+        Toast.makeText(SeeMyDataActivity.this, errorMessage, Toast.LENGTH_SHORT).show();
     }
 }
