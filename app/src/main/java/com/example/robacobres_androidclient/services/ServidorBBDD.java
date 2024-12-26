@@ -54,6 +54,9 @@ public interface ServidorBBDD {
     @GET("store/Items")
     Call<List<Item>> getMyItems();
 
+    @GET("store/Characters")
+    Call<List<GameCharacter>> getMyCharacters();
+
     //get a specific item
     @GET("items/{ItemName}") //ARREGLAR
     Call<Item> getItem(@Path("ItemName") String ItemName);

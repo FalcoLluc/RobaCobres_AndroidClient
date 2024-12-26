@@ -1,113 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <Button
-        android:id="@+id/btn_changePswd"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/button_gradient"
-        android:fontFamily="fantasy"
-        android:onClick="onClickChangePassword"
-        android:paddingHorizontal="16dp"
-        android:text="Change Password"
-        app:layout_constraintBottom_toTopOf="@+id/btn_exit"
-        tools:layout_editor_absoluteX="0dp" />
-    <Button
-        android:id="@+id/btn_insignias"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_gravity="center"
-        android:background="@drawable/button_gradient"
-        android:fontFamily="fantasy"
-        android:onClick="onClickInsignias"
-        android:paddingHorizontal="16dp"
-        android:text="INSIGNIAS"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <Button
-        android:id="@+id/btn_changeCorreo"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/button_gradient"
-        android:fontFamily="fantasy"
-        android:onClick="onClickChangeCorreo"
-        android:paddingHorizontal="16dp"
-        android:text="Change Mail"
-        app:layout_constraintBottom_toTopOf="@+id/btn_changePswd"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <Button
-        android:id="@+id/btn_exit"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="100dp"
-        android:background="@drawable/button_gradient"
-        android:fontFamily="fantasy"
-        android:onClick="onClickClose"
-        android:paddingHorizontal="16dp"
-        android:text="EXIT"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:fontFamily="fantasy"
-        android:text="USER INFORMATION"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/NameText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/CobreText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:fontFamily="fantasy"
-        app:layout_constraintTop_toBottomOf="@+id/MoneyText"
-        tools:layout_editor_absoluteX="-30dp" />
-
-    <EditText
-        android:id="@+id/MoneyText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:fontFamily="fantasy"
-        app:layout_constraintTop_toBottomOf="@+id/CorreoText"
-        tools:layout_editor_absoluteX="-30dp" />
-
-    <EditText
-        android:id="@+id/CorreoText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:fontFamily="fantasy"
-        app:layout_constraintTop_toBottomOf="@+id/NameText"
-        tools:layout_editor_absoluteX="-25dp" />
-
-    <EditText
-        android:id="@+id/NameText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:fontFamily="fantasy"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -119,4 +16,103 @@
         style="@android:style/Widget.ProgressBar.Horizontal"
         android:visibility="gone"
         android:indeterminate="true" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btn_exit"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="18dp"
+        android:background="@android:drawable/ic_menu_close_clear_cancel"
+        android:backgroundTint="#070707"
+        android:onClick="onClickClose" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="USER INFORMATION"
+        android:textSize="24sp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="fantasy"/>
+
+    <EditText
+        android:id="@+id/NameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="fantasy"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
+
+    <EditText
+        android:id="@+id/CorreoText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="fantasy"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
+
+    <EditText
+        android:id="@+id/MoneyText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="fantasy"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
+
+    <EditText
+        android:id="@+id/CobreText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="fantasy"
+        android:layout_marginBottom="28dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
+
+    <Button
+        android:id="@+id/btn_changeCorreo"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingHorizontal="16dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:onClick="onClickChangeCorreo"
+        android:text="Change Mail"
+        android:background="@drawable/button_gradient"
+        android:fontFamily="fantasy"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
+    <Button
+        android:id="@+id/btn_changePswd"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingHorizontal="16dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:onClick="onClickChangePassword"
+        android:text="Change Password"
+        android:background="@drawable/button_gradient"
+        android:fontFamily="fantasy"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
+    <Button
+        android:id="@+id/btn_insignias"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingHorizontal="16dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:onClick="onClickInsignias"
+        android:text="insignias"
+        android:background="@drawable/button_gradient"
+        android:fontFamily="fantasy"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
+
+</LinearLayout>

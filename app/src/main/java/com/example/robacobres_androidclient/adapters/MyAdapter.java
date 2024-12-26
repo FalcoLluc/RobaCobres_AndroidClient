@@ -2,6 +2,7 @@ package com.example.robacobres_androidclient.adapters;
 
 import java.util.List;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,8 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.robacobres_androidclient.ItemsActivity;
+import com.example.robacobres_androidclient.MultiActivity;
 import com.example.robacobres_androidclient.R;
 import com.example.robacobres_androidclient.callbacks.CharacterCallback;
 import com.example.robacobres_androidclient.callbacks.ItemCallback;
@@ -96,7 +99,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             holder.comprar.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    service.userBuysItem(item.getName(), itemCallback);
+                    buy(item);
                 }
             });
 
@@ -113,7 +116,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             holder.comprar.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    service.userBuysCharacter(username, character.getName(), characterCallback);
+                    buy(character);
                 }
             });
         }
@@ -133,5 +136,38 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             return 1; // Tipus per a GameCharacter
         }
         return -1;
+    }
+
+    public void buy(Object itemcharacter){
+        Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.confirm_purchase);
+
+        Button buttonCancel = dialog.findViewById(R.id.ButtonCancel);
+        Button buttonDelete = dialog.findViewById(R.id.ButtonComprar);
+
+        // Si realmente no se quiere comprar
+        buttonCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        // Si se confirma que quiere comprar
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (itemcharacter instanceof Item){
+                    Item item = (Item) itemcharacter;
+                    service.userBuysItem(item.getName(), itemCallback);
+                }
+                else if (itemcharacter instanceof GameCharacter){
+                    GameCharacter character = (GameCharacter) itemcharacter;
+                    service.userBuysCharacter(character.getName(), characterCallback);
+                }
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 }

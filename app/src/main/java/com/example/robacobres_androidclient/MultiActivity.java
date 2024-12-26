@@ -138,7 +138,8 @@ public class MultiActivity extends AppCompatActivity implements AuthCallback, Us
     }
 
     public void onClickMispersonajes(View V){
-
+        Intent intent = new Intent(context, MyCharactersActivity.class);
+        context.startActivity(intent);
     }
 
     public void onClickVenderCobre(View V){

@@ -368,6 +368,45 @@ public class ServiceBBDD {
         });
     }
 
+    public void getMyCharacters(final CharacterCallback callback) {
+        Call<List<GameCharacter>> call = serv.getMyCharacters();
+        call.enqueue(new Callback<List<GameCharacter>>() {
+            @Override
+            public void onResponse(Call<List<GameCharacter>> call, Response<List<GameCharacter>> response) {
+                if (response.code() == 201) {
+                    List<GameCharacter> characters = response.body();
+                    callback.onCharacterCallback(characters);
+                    for (GameCharacter g : characters) {
+                        Log.d("API_RESPONSE", "Character Name: " + g.getName());
+                    }
+                }
+                else if (response.code() == 501){
+                    Log.d("API_RESPONSE", "ERROR USER NOT FOUND ");
+                    callback.onError("Error User Not Found");
+                }
+                else if (response.code() == 502) {
+                    Log.d("API_RESPONSE", "No Items");
+                    callback.onError("No characters");
+                }
+                else if (response.code() == 506) {
+                    Log.d("API_RESPONSE", "User not logged in yet");
+                    callback.onError("User not logged in yet");
+                }
+                else {
+                    Log.d("API_RESPONSE", "Response not successful, code: " + response.code());
+                    callback.onError("Error "+response.code());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<GameCharacter>> call, Throwable t) {
+                Log.e("API_ERROR", "API call failed", t);
+                callback.onError("ERROR WITH CONNECTION");
+            }
+        });
+    }
+
     public void getItem(String itemName) {
         Call<Item> call = serv.getItem(itemName);
         call.enqueue(new Callback<Item>() {
@@ -468,7 +507,7 @@ public class ServiceBBDD {
         });
     }
 
-    public void userBuysCharacter(String _username, String characterName, final CharacterCallback callback) {
+    public void userBuysCharacter(String characterName, final CharacterCallback callback) {
         Call<List<GameCharacter>> call = serv.userBuysCharacter(characterName);
         call.enqueue(new Callback<List<GameCharacter>>() {
             @Override
