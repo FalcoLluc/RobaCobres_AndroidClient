@@ -1,0 +1,230 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="16dp"
+    android:background="#f9f9f9">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="14dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:padding="0dp"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:visibility="gone"
+        android:indeterminate="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/BotonCompartir"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:drawable/ic_dialog_email"
+            android:backgroundTint="#696969"
+            android:onClick="onClickBotonCompartir"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp" />
+
+        <Button
+            android:id="@+id/BotonRetroceder"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:drawable/ic_menu_close_clear_cancel"
+            android:backgroundTint="#070707"
+            android:onClick="onClickBotonRetroceder"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="24dp">
+
+        <ImageView
+            android:id="@+id/trofeo"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:src="@drawable/trofeo"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:fontFamily="fantasy"/>
+
+        <TextView
+            android:id="@+id/score_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Best Score:"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:fontFamily="fantasy"/>
+
+        <TextView
+            android:id="@+id/best_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9999"
+            android:textSize="36sp"
+            android:textColor="#FFD700"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:fontFamily="fantasy"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RANKING"
+        android:textSize="22sp"
+        android:textColor="#212121"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:fontFamily="fantasy"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="24dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="#ECEFF1"
+            android:layout_margin="4dp"
+            android:elevation="4dp">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/plata"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/silver_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Player 2"
+                android:textSize="16sp"
+                android:textColor="#212121"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:fontFamily="fantasy"/>
+
+            <TextView
+                android:id="@+id/silver_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5000"
+                android:textSize="14sp"
+                android:textColor="#696969"
+                android:gravity="center"
+                android:fontFamily="fantasy"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="240dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="#FFF9D4"
+            android:layout_margin="4dp"
+            android:elevation="6dp">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/oro"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/gold_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Player 1"
+                android:textSize="18sp"
+                android:textColor="#212121"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:fontFamily="fantasy"/>
+
+            <TextView
+                android:id="@+id/gold_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6000"
+                android:textSize="16sp"
+                android:textColor="#696969"
+                android:gravity="center"
+                android:fontFamily="fantasy"/>
+        </LinearLayout>
+
+        <!-- Bronze Player -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="#D4A373"
+            android:layout_margin="4dp"
+            android:elevation="4dp">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/bronze"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/bronze_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Player 3"
+                android:textSize="16sp"
+                android:textColor="#212121"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:fontFamily="fantasy"/>
+
+            <TextView
+                android:id="@+id/bronze_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4000"
+                android:textSize="14sp"
+                android:textColor="#696969"
+                android:gravity="center"
+                android:fontFamily="fantasy"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical" />
+</LinearLayout>

@@ -6,7 +6,9 @@ import com.example.robacobres_androidclient.models.Forum;
 import com.example.robacobres_androidclient.models.GameCharacter;
 import com.example.robacobres_androidclient.models.Insignia;
 import com.example.robacobres_androidclient.models.Item;
+import com.example.robacobres_androidclient.models.Ranking;
 import com.example.robacobres_androidclient.models.User;
+import com.example.robacobres_androidclient.models.Video;
 
 import java.util.List;
 
@@ -72,6 +74,18 @@ public interface ServidorBBDD {
 
     @GET("users/stats")
     Call<User> GetStatsUser();
+
+    @GET("users/GetMaxPuntuacion")
+    Call<String> getMaxPuntuacion();
+
+    @GET("users/GetRanking")
+    Call<List<Ranking>> getRanking();
+
+    @GET("users/GetMailRanking")
+    Call<Void> getMailRanking();
+
+    @GET("users/media")
+    Call<List<Video>> getMedia();
 
     //GetUser
     @POST("users/stats") //OK

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp" >
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="14dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:padding="0dp"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:visibility="gone"
+        android:indeterminate="true" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Videos de soporte"
+        android:textSize="24sp"
+        android:textColor="#333333"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/BotonRetroceder"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="18dp"
+        android:background="@android:drawable/ic_menu_close_clear_cancel"
+        android:backgroundTint="#070707"
+        android:onClick="onClickBotonRetroceder" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/my_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title"
+        android:layout_marginTop="20dp"
+        android:scrollbars="vertical" />
+
+</RelativeLayout>

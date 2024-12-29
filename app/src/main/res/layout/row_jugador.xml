@@ -1,0 +1,46 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:background="@drawable/player_design"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/nombrejugador"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Player Name"
+        android:textSize="20sp"
+        android:textColor="#212121"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:gravity="start"
+        android:fontFamily="fantasy"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/points"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/puntos"
+            android:layout_marginEnd="12dp" />
+
+        <TextView
+            android:id="@+id/puntosjugador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9999"
+            android:textSize="22sp"
+            android:textColor="#696969"
+            android:gravity="center"
+            android:fontFamily="fantasy"/>
+    </LinearLayout>
+</LinearLayout>

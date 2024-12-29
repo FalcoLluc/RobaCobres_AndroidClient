@@ -151,6 +151,11 @@ public class MultiActivity extends AppCompatActivity implements AuthCallback, Us
 
     }
 
+    public void onClickBotonSoporte(View V){
+        Intent intent = new Intent(context, VideosActivity.class);
+        context.startActivity(intent);
+    }
+
     public void onClickForum(View v){
         serviceREST.getForum(this);
     }
@@ -159,6 +164,12 @@ public class MultiActivity extends AppCompatActivity implements AuthCallback, Us
         serviceREST.getPrivateNames(this);
 
     }
+
+    public void onClickBotonRanking(View v){
+        Intent intent = new Intent(context, RankingActivity.class);
+        context.startActivity(intent);
+    }
+
 
     @Override
     public void onDeleteUser(){

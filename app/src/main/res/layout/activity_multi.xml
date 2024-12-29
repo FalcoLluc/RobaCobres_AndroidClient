@@ -5,6 +5,28 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
+    <ImageButton
+        android:id="@+id/BotonRanking"
+        android:src="@drawable/rankings"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@android:color/transparent"
+        android:layout_alignBottom="@+id/Button_tienda"
+        android:layout_marginEnd="144dp"
+        android:layout_toStartOf="@+id/Button_tienda"
+        android:scaleType="centerInside"
+        android:onClick="onClickBotonRanking" />
+    <Button
+        android:id="@+id/BotonSoporte"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@android:drawable/ic_menu_help"
+        android:backgroundTint="#696969"
+        android:layout_alignBottom="@+id/Button_tienda"
+        android:layout_marginEnd="210dp"
+        android:layout_toStartOf="@+id/Button_tienda"
+        android:onClick="onClickBotonSoporte" />
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="87dp"
@@ -20,10 +42,10 @@
 
     <ImageButton
         android:id="@+id/imageButton2"
-        android:layout_width="87dp"
-        android:layout_height="70dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_alignBottom="@+id/Button_tienda"
-        android:layout_marginEnd="29dp"
+        android:layout_marginEnd="14dp"
         android:layout_marginBottom="-4dp"
         android:layout_toStartOf="@+id/Button_tienda"
         android:onClick="onClickPrivate"
@@ -160,10 +182,10 @@
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="87dp"
-        android:layout_height="70dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_alignBottom="@+id/Button_tienda"
-        android:layout_marginEnd="149dp"
+        android:layout_marginEnd="74dp"
         android:layout_marginBottom="-4dp"
         android:layout_toStartOf="@+id/Button_tienda"
         android:onClick="onClickForum"

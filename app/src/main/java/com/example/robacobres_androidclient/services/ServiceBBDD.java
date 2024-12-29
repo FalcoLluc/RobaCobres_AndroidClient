@@ -9,8 +9,10 @@ import com.example.robacobres_androidclient.callbacks.ChargeDataCallback;
 import com.example.robacobres_androidclient.callbacks.ForumCallback;
 import com.example.robacobres_androidclient.callbacks.InsigniasCallback;
 import com.example.robacobres_androidclient.callbacks.ItemCallback;
+import com.example.robacobres_androidclient.callbacks.PartidasCallback;
 import com.example.robacobres_androidclient.callbacks.PrivateCallback;
 import com.example.robacobres_androidclient.callbacks.UserCallback;
+import com.example.robacobres_androidclient.callbacks.VideoCallback;
 import com.example.robacobres_androidclient.interceptors.AddCookiesInterceptor;
 import com.example.robacobres_androidclient.interceptors.ReceivedCookiesInterceptor;
 import com.example.robacobres_androidclient.models.ChangePassword;
@@ -19,7 +21,9 @@ import com.example.robacobres_androidclient.models.Forum;
 import com.example.robacobres_androidclient.models.GameCharacter;
 import com.example.robacobres_androidclient.models.Insignia;
 import com.example.robacobres_androidclient.models.Item;
+import com.example.robacobres_androidclient.models.Ranking;
 import com.example.robacobres_androidclient.models.User;
+import com.example.robacobres_androidclient.models.Video;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,9 +35,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Body;
-import retrofit2.http.POST;
-import retrofit2.http.Path;
 
 public class ServiceBBDD {
     private static ServiceBBDD instance;
@@ -860,6 +861,116 @@ public class ServiceBBDD {
         });
 
     }
+    public void getMaxPuntuacion(final PartidasCallback callback) {
+        Call<String> call = serv.getMaxPuntuacion();
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (response.code() == 201) {
+                    String maxpunc = response.body();
+                    callback.onChargePuntuacionMax(maxpunc);
+                    Log.d("API_RESPONSE", "Maxima puntuacion usuario: " + maxpunc);
+                } else if (response.code() == 502) {
+                    callback.onMessage("NO DATA AVAILABLE");
+                    Log.d("API_RESPONSE", "NO DATA AVAILABLE, code: " + response.code());
+                }else if (response.code() == 508) {
+                    callback.onMessage("ERROR");
+                    Log.d("API_RESPONSE", "QUERY ERROR, code: " + response.code());
+                }else{
+                    callback.onMessage("ERROR");
+                    Log.d("API_RESPONSE", "Response not successful, code: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.e("API_ERROR", "API call failed", t);
+            }
+        });
+    }
+
+    public void getRanking(final PartidasCallback callback) {
+        Call<List<Ranking>> call = serv.getRanking();
+        call.enqueue(new Callback<List<Ranking>>() {
+            @Override
+            public void onResponse(Call<List<Ranking>> call, Response<List<Ranking>> response) {
+                if (response.code() == 201) {
+                    List<Ranking> ranking = response.body();
+                    callback.onChargeRanking(ranking);
+                    for (Ranking r : ranking) {
+                        Log.d("API_RESPONSE", "Ranking Name: " + r.getUsername() + " Ranking points: " + r.getMaxpuntuacion());
+                    }
+                } else if (response.code() == 502) {
+                    callback.onMessage("NO DATA AVAILABLE");
+                    Log.d("API_RESPONSE", "NO DATA AVAILABLE, code: " + response.code());
+                }else if (response.code() == 508) {
+                    callback.onMessage("ERROR");
+                    Log.d("API_RESPONSE", "QUERY ERROR, code: " + response.code());
+                }else{
+                    callback.onMessage("ERROR");
+                    Log.d("API_RESPONSE", "Response not successful, code: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Ranking>> call, Throwable t) {
+                Log.e("API_ERROR", "API call failed", t);
+            }
+        });
+    }
+    public void getMailRanking(final PartidasCallback partidasCallback){
+        Call<Void> call = serv.getMailRanking();
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.code() == 201) {
+                    partidasCallback.onMessage("CHECK YOUR MAIL");
+                    Log.d("API_RESPONSE", "POST SUCCESSFUL");
+                } else if (response.code() == 500) {
+                    partidasCallback.onMessage("ERROR");
+                    Log.d("API_RESPONSE", "Response not successful, code: " + response.code());
+                }else if (response.code() == 506) {
+                    partidasCallback.onMessage("USER NOT LOGGED IN");
+                    Log.d("API_RESPONSE", "Response not successful, code: " + response.code());
+                }
+            }
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e("API_ERROR", "API call failed", t);
+            }
+        });
+    }
+
+    public void getMedia(final VideoCallback callback) {
+        Call<List<Video>> call = serv.getMedia();
+        call.enqueue(new Callback<List<Video>>() {
+            @Override
+            public void onResponse(Call<List<Video>> call, Response<List<Video>> response) {
+                if (response.code() == 201) {
+                    List<Video> videos = response.body();
+                    callback.onVideoCallback(videos);
+                    for (Video v : videos) {
+                        Log.d("API_RESPONSE", "Video descripcion: " + v.getDescripcion() + " Video url: " + v.getUrl());
+                    }
+                } else if (response.code() == 502) {
+                    callback.onMessage("NO DATA AVAILABLE");
+                    Log.d("API_RESPONSE", "NO DATA AVAILABLE, code: " + response.code());
+                }else if (response.code() == 508) {
+                    callback.onMessage("ERROR");
+                    Log.d("API_RESPONSE", "QUERY ERROR, code: " + response.code());
+                }else{
+                    callback.onMessage("ERROR");
+                    Log.d("API_RESPONSE", "Response not successful, code: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Video>> call, Throwable t) {
+                Log.e("API_ERROR", "API call failed", t);
+            }
+        });
+    }
+
 }
 
 
