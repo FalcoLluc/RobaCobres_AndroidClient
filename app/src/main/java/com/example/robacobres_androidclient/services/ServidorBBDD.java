@@ -16,6 +16,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -127,6 +128,10 @@ public interface ServidorBBDD {
 
     @POST("users/{name}/save/badges") //OK
     Call<List<Insignia>> putInsignia(@Path("name") String name, @Body Insignia insignia);
+
+    @POST("games/state")
+    @Headers("Content-Type: text/plain")
+    Call<Void> sendState(@Body String state);
     /*
     //DELETE
     @DELETE("tracks/{id}")

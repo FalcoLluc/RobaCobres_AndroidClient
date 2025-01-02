@@ -11,6 +11,7 @@ import com.example.robacobres_androidclient.callbacks.InsigniasCallback;
 import com.example.robacobres_androidclient.callbacks.ItemCallback;
 import com.example.robacobres_androidclient.callbacks.PartidasCallback;
 import com.example.robacobres_androidclient.callbacks.PrivateCallback;
+import com.example.robacobres_androidclient.callbacks.UnityCallback;
 import com.example.robacobres_androidclient.callbacks.UserCallback;
 import com.example.robacobres_androidclient.callbacks.VideoCallback;
 import com.example.robacobres_androidclient.interceptors.AddCookiesInterceptor;
@@ -967,6 +968,35 @@ public class ServiceBBDD {
             @Override
             public void onFailure(Call<List<Video>> call, Throwable t) {
                 Log.e("API_ERROR", "API call failed", t);
+            }
+        });
+    }
+
+    //PART UNITY
+    //AL ENVIAR STRING, RETROFIT HO ENVIA COM UN txt/plain
+    // This method will handle the .txt content received from Unity
+    public void sendStateToServer(String itemsStateText,final UnityCallback callback) {
+        // Here you can handle the .txt or string content and make a Retrofit API call
+        Log.d("ServiceBBDD", "Received state from Unity: " + itemsStateText);
+
+        // Use Retrofit to send this data to your server
+        // For example, create an API method that accepts this text and sends it to the server
+        Call<Void> call = serv.sendState(itemsStateText);  // Replace 'sendState' with your actual method
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Log.d("ServiceBBDD", "HOLA ENVIADO CORRECTAMENTE");
+                    callback.onReturnHola();
+
+                } else {
+                    Log.e("ServiceBBDD", "Failed to send state.");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e("ServiceBBDD", "Error sending state to server", t);
             }
         });
     }

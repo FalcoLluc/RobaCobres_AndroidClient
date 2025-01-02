@@ -53,4 +53,6 @@ dependencies {
 
     implementation(libs.appcompat.v151)
     implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.1")
+
+    implementation(files("libs/unityLibrary-debug.aar"))
 }
