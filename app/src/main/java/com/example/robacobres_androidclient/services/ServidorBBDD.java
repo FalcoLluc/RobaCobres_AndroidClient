@@ -132,6 +132,13 @@ public interface ServidorBBDD {
     @POST("games/state")
     @Headers("Content-Type: text/plain")
     Call<Void> sendState(@Body String state);
+
+    @POST("games/save")
+    @Headers("Content-Type: text/plain")
+    Call<Void> sendSaveToServer(@Body String levelstring);
+
+    @GET("games/load") //ARREGLAR
+    Call<String> getLevel();
     /*
     //DELETE
     @DELETE("tracks/{id}")

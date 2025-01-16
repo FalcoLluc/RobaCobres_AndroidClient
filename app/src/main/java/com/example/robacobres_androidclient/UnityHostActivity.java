@@ -33,14 +33,29 @@ public class UnityHostActivity extends UnityPlayerActivity implements UnityCallb
         serviceREST.sendStateToServer(itemsStateText,this);
     }
 
-    // Expose this method to Unity to close the activity
-    public void exitUnity() {
-        finish();  // This will close the UnityHostActivity and return to the previous activity
+    public void sendSaveGame(String levelString){
+        // Call the Retrofit method to send data
+        serviceREST.sendSave(levelString);
     }
-
+    // Method to close the Unity application
+    public void exitUnity() {
+        finish();
+    }
     //CALLBACKS
     @Override
     public void onReturnHola() {
         UnityPlayer.UnitySendMessage("AndroidBridge", "OnServerResponse", "ECO HOLA");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Custom logic for when the Android activity is paused (optional)
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Do not auto-resume Unity here, it's handled via Unity buttons
     }
 }

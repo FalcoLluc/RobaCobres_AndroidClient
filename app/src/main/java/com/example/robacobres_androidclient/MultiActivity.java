@@ -148,7 +148,7 @@ public class MultiActivity extends AppCompatActivity implements AuthCallback, Us
     }
 
     public void onClickPlay(View V){
-        Intent intent = new Intent(MultiActivity.this, UnityHostActivity.class);
+        Intent intent = new Intent( context, UnityHostActivity.class);
         startActivity(intent);
     }
 
