@@ -1020,6 +1020,25 @@ public class ServiceBBDD {
         });
     }
 
+    public void sendAddCobre(int cobreAmount) {
+        Call<Void> call = serv.addCobre(Integer.toString(cobreAmount));
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Log.d("ServiceBBDD", "Enviat");
+                } else {
+                    Log.e("ServiceBBDD", "Failed to send state.");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e("ServiceBBDD", "Error sending state to server", t);
+            }
+        });
+    }
+
 }
 
 

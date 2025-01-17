@@ -37,25 +37,21 @@ public class UnityHostActivity extends UnityPlayerActivity implements UnityCallb
         // Call the Retrofit method to send data
         serviceREST.sendSave(levelString);
     }
+
+    public void sendAddCobre(int cobre){
+        // Call the Retrofit method to send data
+        serviceREST.sendAddCobre(cobre);
+    }
     // Method to close the Unity application
     public void exitUnity() {
         finish();
     }
     //CALLBACKS
+
+
+    //AQUEST ES DE DEMO
     @Override
     public void onReturnHola() {
         UnityPlayer.UnitySendMessage("AndroidBridge", "OnServerResponse", "ECO HOLA");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        // Custom logic for when the Android activity is paused (optional)
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        // Do not auto-resume Unity here, it's handled via Unity buttons
     }
 }

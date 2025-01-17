@@ -139,6 +139,10 @@ public interface ServidorBBDD {
 
     @GET("games/load") //ARREGLAR
     Call<String> getLevel();
+
+    @GET("games/addCobre/{cobre}")
+    Call<Void> addCobre(@Path("cobre") String cobre);
+
     /*
     //DELETE
     @DELETE("tracks/{id}")
