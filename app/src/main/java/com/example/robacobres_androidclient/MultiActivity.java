@@ -35,11 +35,11 @@ import java.util.List;
 
 public class MultiActivity extends AppCompatActivity implements AuthCallback, UserCallback, ForumCallback, PrivateCallback {
     ServiceBBDD serviceREST;
-    Button btnPlay;
-    Button btnMisObjetos;
-    Button btnMisPersonajes;
+    ImageButton btnPlay;
+    ImageButton btnMisObjetos;
+    ImageButton btnMisPersonajes;
     ImageButton btnTienda;
-    Button btnEliminarCuenta;
+    ImageButton btnEliminarCuenta;
     User user;
 
     private ProgressBar progressBar;
@@ -65,11 +65,11 @@ public class MultiActivity extends AppCompatActivity implements AuthCallback, Us
 
         serviceREST=ServiceBBDD.getInstance(this);
 
-        btnPlay = findViewById(R.id.Button_play);
-        btnMisObjetos = findViewById(R.id.Button_misobjetos);
-        btnMisPersonajes = findViewById(R.id.Button_Mispersonajes);
-        btnTienda = findViewById(R.id.Button_tienda);
-        btnEliminarCuenta = findViewById(R.id.Button_eliminarcuenta);
+        btnPlay = findViewById(R.id.button_center);
+        btnMisObjetos = findViewById(R.id.button_right_bottom);
+        btnMisPersonajes = findViewById(R.id.button_left_bottom);
+        btnTienda = findViewById(R.id.button_top_center);
+        btnEliminarCuenta = findViewById(R.id.button_bottom_right);
         progressBar = findViewById(R.id.progressBar);
         // Agafar les dades que li passem del usuari registrat
         Intent intent = getIntent();

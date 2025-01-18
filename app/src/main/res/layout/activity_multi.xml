@@ -1,210 +1,209 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
-
-    <ImageButton
-        android:id="@+id/BotonRanking"
-        android:src="@drawable/rankings"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:background="@android:color/transparent"
-        android:layout_alignBottom="@+id/Button_tienda"
-        android:layout_marginEnd="144dp"
-        android:layout_toStartOf="@+id/Button_tienda"
-        android:scaleType="centerInside"
-        android:onClick="onClickBotonRanking" />
-    <Button
-        android:id="@+id/BotonSoporte"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:background="@android:drawable/ic_menu_help"
-        android:backgroundTint="#696969"
-        android:layout_alignBottom="@+id/Button_tienda"
-        android:layout_marginEnd="210dp"
-        android:layout_toStartOf="@+id/Button_tienda"
-        android:onClick="onClickBotonSoporte" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="87dp"
-        android:layout_height="21dp"
-        android:layout_above="@+id/imageButton"
-        android:layout_alignStart="@+id/imageButton"
-        android:layout_alignEnd="@+id/imageButton"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="2dp"
-        android:text="Forum"
-        android:textAlignment="center" />
-
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignBottom="@+id/Button_tienda"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="-4dp"
-        android:layout_toStartOf="@+id/Button_tienda"
-        android:onClick="onClickPrivate"
-        app:srcCompat="@android:drawable/stat_notify_chat" />
+    android:id="@+id/main">
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="@android:style/Widget.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="14dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="5dp"
         android:indeterminate="true"
         android:padding="0dp"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="5dp" />
 
     <ImageButton
-        android:id="@+id/Button_tienda"
+        android:id="@+id/button_center"
+        android:layout_width="120dp"
+        android:layout_height="200dp"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.408"
+        android:background="@android:color/transparent"
+        android:adjustViewBounds="true"
+        android:onClick="onClickPlay"
+        android:scaleType="centerInside"
+        android:src="@drawable/play" />
+
+
+    <ImageButton
+        android:id="@+id/button_top_left"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="25dp"
         android:adjustViewBounds="true"
         android:background="@android:color/transparent"
-        android:contentDescription="Ir a la tienda"
+        android:onClick="onClickVenderCobre"
+        android:scaleType="centerInside"
+        android:src="@drawable/vender_cobre"
+        app:layout_constraintBottom_toTopOf="@id/button_center"
+        app:layout_constraintEnd_toStartOf="@id/button_top_center" />
+
+    <ImageButton
+        android:id="@+id/button_top_center"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="25dp"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
         android:onClick="onClickTienda"
         android:scaleType="centerInside"
-        android:src="@drawable/shop" />
+        android:src="@drawable/shop"
+        app:layout_constraintBottom_toTopOf="@id/button_center"
+        app:layout_constraintEnd_toEndOf="@id/button_center"
+        app:layout_constraintStart_toStartOf="@id/button_center" />
 
-    <Button
-        android:id="@+id/Button_misobjetos"
-        android:layout_width="115dp"
-        android:layout_height="115dp"
-        android:layout_below="@id/Button_tienda"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="60dp"
-        android:background="@drawable/button_gradient"
-        android:fontFamily="fantasy"
-        android:onClick="onClickMyItems"
-        android:text="Mis objetos"
-        android:textColor="#000000"
-        android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/Button_play"
-        android:layout_width="115dp"
-        android:layout_height="115dp"
-        android:layout_below="@id/Button_tienda"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/button_gradient"
-        android:fontFamily="fantasy"
-        android:onClick="onClickPlay"
-        android:text="Play"
-        android:textColor="#000000"
-        android:textStyle="bold" />
+    <ImageButton
+        android:id="@+id/button_top_right"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="25dp"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:onClick="onClickBotonRanking"
+        android:scaleType="centerInside"
+        android:src="@drawable/rankings"
+        app:layout_constraintBottom_toTopOf="@id/button_center"
+        app:layout_constraintStart_toEndOf="@id/button_top_center" />
 
-    <Button
-        android:id="@+id/Button_Mispersonajes"
-        android:layout_width="115dp"
-        android:layout_height="115dp"
-        android:layout_below="@id/Button_play"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/button_gradient"
-        android:fontFamily="fantasy"
-        android:onClick="onClickMispersonajes"
-        android:text="Mis personajes"
-        android:textColor="#000000"
-        android:textStyle="bold" />
+    <ImageButton
+        android:id="@+id/button_bottom_left"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toStartOf="@id/button_bottom_center"
+        app:layout_constraintTop_toBottomOf="@id/button_center"
+        android:background="@android:color/transparent"
+        android:adjustViewBounds="true"
+        android:onClick="onClickBotonSoporte"
+        android:scaleType="centerInside"
+        android:src="@drawable/videossoporte"/>
 
-    <Button
-        android:id="@+id/Button_VenderCobre"
-        android:layout_width="115dp"
-        android:layout_height="115dp"
-        android:layout_below="@id/Button_misobjetos"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="60dp"
-        android:background="@drawable/button_gradient"
-        android:fontFamily="fantasy"
-        android:onClick="onClickVenderCobre"
-        android:text="Vender Cobre"
-        android:textColor="#000000"
-        android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/Button_VerMisDatos"
-        android:layout_width="115dp"
-        android:layout_height="115dp"
-        android:layout_below="@id/Button_Mispersonajes"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/button_gradient"
-        android:fontFamily="fantasy"
+    <ImageButton
+        android:id="@+id/button_bottom_center"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintTop_toBottomOf="@id/button_center"
+        app:layout_constraintStart_toStartOf="@id/button_center"
+        app:layout_constraintEnd_toEndOf="@id/button_center"
+        android:background="@android:color/transparent"
+        android:adjustViewBounds="true"
         android:onClick="onClickSeeMyData"
-        android:text="VER MIS DATOS"
-        android:textColor="#000000"
-        android:textStyle="bold" />
+        android:scaleType="centerInside"
+        android:src="@drawable/misdatos"/>
 
-    <Button
-        android:id="@+id/Button_eliminarcuenta"
-        android:layout_width="115dp"
-        android:layout_height="115dp"
-        android:layout_below="@id/Button_VenderCobre"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="60dp"
-        android:background="@drawable/button_gradient"
-        android:fontFamily="fantasy"
+
+    <ImageButton
+        android:id="@+id/button_bottom_right"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="32dp"
+        app:layout_constraintStart_toEndOf="@id/button_bottom_center"
+        app:layout_constraintTop_toBottomOf="@id/button_center"
+        android:background="@android:color/transparent"
+        android:adjustViewBounds="true"
         android:onClick="onClickEliminarCuenta"
-        android:text="Eliminar cuenta"
-        android:textColor="#000000"
-        android:textStyle="bold" />
+        android:scaleType="centerInside"
+        android:src="@drawable/eliminarcuenta"/>
+
+
+    <ImageButton
+        android:id="@+id/button_left_top"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="15dp"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:onClick="onClickPrivate"
+        android:scaleType="centerInside"
+        android:src="@drawable/chatindividual"
+        app:layout_constraintBottom_toTopOf="@id/button_left_bottom"
+        app:layout_constraintEnd_toStartOf="@id/button_center"
+        app:layout_constraintTop_toTopOf="@id/button_center" />
+
+    <ImageButton
+        android:id="@+id/button_left_bottom"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toStartOf="@id/button_center"
+        app:layout_constraintTop_toBottomOf="@id/button_left_top"
+        app:layout_constraintBottom_toBottomOf="@id/button_center"
+        android:background="@android:color/transparent"
+        android:adjustViewBounds="true"
+        android:onClick="onClickMispersonajes"
+        android:scaleType="centerInside"
+        android:src="@drawable/gamecharacter"/>
+
+
+    <ImageButton
+        android:id="@+id/button_right_top"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintStart_toEndOf="@id/button_center"
+        app:layout_constraintBottom_toTopOf="@id/button_right_bottom"
+        app:layout_constraintTop_toTopOf="@id/button_center"
+        android:background="@android:color/transparent"
+        android:adjustViewBounds="true"
+        android:onClick="onClickForum"
+        android:scaleType="centerInside"
+        android:src="@drawable/forum"/>
+
+
+    <ImageButton
+        android:id="@+id/button_right_bottom"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintStart_toEndOf="@id/button_center"
+        app:layout_constraintTop_toBottomOf="@id/button_right_top"
+        app:layout_constraintBottom_toBottomOf="@id/button_center"
+        android:background="@android:color/transparent"
+        android:adjustViewBounds="true"
+        android:onClick="onClickMyItems"
+        android:scaleType="centerInside"
+        android:src="@drawable/items"/>
 
     <Button
         android:id="@+id/Button_logout"
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="72dp"
         android:background="@drawable/button_gradient_logout"
         android:fontFamily="sans-serif-medium"
         android:onClick="onClickLogout"
         android:text="Logout"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_bottom_center" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignBottom="@+id/Button_tienda"
-        android:layout_marginEnd="74dp"
-        android:layout_marginBottom="-4dp"
-        android:layout_toStartOf="@+id/Button_tienda"
-        android:onClick="onClickForum"
-        app:srcCompat="@android:drawable/stat_notify_chat" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="87dp"
-        android:layout_height="21dp"
-        android:layout_above="@+id/imageButton"
-        android:layout_alignStart="@+id/imageButton2"
-        android:layout_alignEnd="@+id/imageButton2"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
-        android:text="Private"
-        android:textAlignment="center" />
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
