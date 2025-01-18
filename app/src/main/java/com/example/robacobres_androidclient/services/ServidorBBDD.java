@@ -6,6 +6,7 @@ import com.example.robacobres_androidclient.models.Forum;
 import com.example.robacobres_androidclient.models.GameCharacter;
 import com.example.robacobres_androidclient.models.Insignia;
 import com.example.robacobres_androidclient.models.Item;
+import com.example.robacobres_androidclient.models.PartidaActual;
 import com.example.robacobres_androidclient.models.Ranking;
 import com.example.robacobres_androidclient.models.User;
 import com.example.robacobres_androidclient.models.Video;
@@ -134,14 +135,16 @@ public interface ServidorBBDD {
     Call<Void> sendState(@Body String state);
 
     @POST("games/save")
-    @Headers("Content-Type: text/plain")
-    Call<Void> sendSaveToServer(@Body String levelstring);
+    Call<Void> sendSaveToServer(@Body PartidaActual level);
 
     @GET("games/load") //ARREGLAR
     Call<String> getLevel();
 
     @GET("games/addCobre/{cobre}")
     Call<Void> addCobre(@Path("cobre") String cobre);
+
+    @GET("games/addTotales/{cobre}")
+    Call<Void> addCobreTotal(@Path("cobre") String cobre);
 
     /*
     //DELETE

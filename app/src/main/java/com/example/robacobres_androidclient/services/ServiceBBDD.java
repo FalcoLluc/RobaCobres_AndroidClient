@@ -22,6 +22,7 @@ import com.example.robacobres_androidclient.models.Forum;
 import com.example.robacobres_androidclient.models.GameCharacter;
 import com.example.robacobres_androidclient.models.Insignia;
 import com.example.robacobres_androidclient.models.Item;
+import com.example.robacobres_androidclient.models.PartidaActual;
 import com.example.robacobres_androidclient.models.Ranking;
 import com.example.robacobres_androidclient.models.User;
 import com.example.robacobres_androidclient.models.Video;
@@ -1001,8 +1002,8 @@ public class ServiceBBDD {
         });
     }
 
-    public void sendSave(String levelstring) {
-        Call<Void> call = serv.sendSaveToServer(levelstring);
+    public void sendAddCobre(int cobreAmount) {
+        Call<Void> call = serv.addCobre(Integer.toString(cobreAmount));
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -1020,8 +1021,27 @@ public class ServiceBBDD {
         });
     }
 
-    public void sendAddCobre(int cobreAmount) {
-        Call<Void> call = serv.addCobre(Integer.toString(cobreAmount));
+    public void sendAddCobreTotal(int cobreAmount) {
+        Call<Void> call = serv.addCobreTotal(Integer.toString(cobreAmount));
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Log.d("ServiceBBDD", "Enviat");
+                } else {
+                    Log.e("ServiceBBDD", "Failed to send state.");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e("ServiceBBDD", "Error sending state to server", t);
+            }
+        });
+    }
+
+    public void sendSave(PartidaActual level) {
+        Call<Void> call = serv.sendSaveToServer(level);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

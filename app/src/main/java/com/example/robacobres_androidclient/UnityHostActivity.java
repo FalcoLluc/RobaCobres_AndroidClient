@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat;
 import android.os.Bundle;
 
 import com.example.robacobres_androidclient.callbacks.UnityCallback;
+import com.example.robacobres_androidclient.models.PartidaActual;
 import com.example.robacobres_androidclient.services.ServiceBBDD;
 import com.unity3d.player.UnityPlayer;
 import com.unity3d.player.UnityPlayerActivity;
@@ -33,14 +34,23 @@ public class UnityHostActivity extends UnityPlayerActivity implements UnityCallb
         serviceREST.sendStateToServer(itemsStateText,this);
     }
 
-    public void sendSaveGame(String levelString){
-        // Call the Retrofit method to send data
-        serviceREST.sendSave(levelString);
-    }
-
     public void sendAddCobre(int cobre){
         // Call the Retrofit method to send data
         serviceREST.sendAddCobre(cobre);
+    }
+
+    public void sendAddPuntosTotales(int cobre){
+        // Call the Retrofit method to send data
+        serviceREST.sendAddCobreTotal(cobre);
+    }
+
+    //PARTIDA
+    public void sendSaveGame(String levelString,int level){
+        PartidaActual p=new PartidaActual();
+        p.setTxt(levelString);
+        p.setNivell(level);
+        // Call the Retrofit method to send data
+        serviceREST.sendSave(p);
     }
     // Method to close the Unity application
     public void exitUnity() {
