@@ -134,17 +134,17 @@ public interface ServidorBBDD {
     @Headers("Content-Type: text/plain")
     Call<Void> sendState(@Body String state);
 
-    @POST("games/save")
-    Call<Void> sendSaveToServer(@Body PartidaActual level);
-
-    @GET("games/load") //ARREGLAR
-    Call<String> getLevel();
-
     @GET("games/addCobre/{cobre}")
     Call<Void> addCobre(@Path("cobre") String cobre);
 
     @GET("games/addTotales/{cobre}")
     Call<Void> addCobreTotal(@Path("cobre") String cobre);
+
+    @POST("games/save")
+    Call<Void> sendSaveToServer(@Body PartidaActual level);
+
+    @GET("games/load") //ARREGLAR
+    Call<PartidaActual> getLevel();
 
     /*
     //DELETE

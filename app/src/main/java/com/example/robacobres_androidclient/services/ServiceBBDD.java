@@ -1059,6 +1059,26 @@ public class ServiceBBDD {
         });
     }
 
+    public void getLevel(final UnityCallback callback){
+        Call<PartidaActual> call=serv.getLevel();
+        call.enqueue(new Callback<PartidaActual>() {
+            @Override
+            public void onResponse(Call<PartidaActual> call, Response<PartidaActual> response) {
+                if (response.code() == 201) {
+                    PartidaActual partida = response.body();
+                    callback.onReturnLevel(partida);
+                    Log.d("API_RESPONSE", "Partida Cargada ");
+                }else{
+                    callback.onReturnNoExistingLevel();
+                }
+            }
+            @Override
+            public void onFailure(Call<PartidaActual> call, Throwable t) {
+                Log.e("API_ERROR", "API call failed", t);
+            }
+        });
+    }
+
 }
 
 

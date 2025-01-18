@@ -57,11 +57,24 @@ public class UnityHostActivity extends UnityPlayerActivity implements UnityCallb
         finish();
     }
     //CALLBACKS
+    public void requestGame(){
+        serviceREST.getLevel(this);
+    }
 
 
     //AQUEST ES DE DEMO
     @Override
     public void onReturnHola() {
         UnityPlayer.UnitySendMessage("AndroidBridge", "OnServerResponse", "ECO HOLA");
+    }
+
+    @Override
+    public void onReturnLevel(PartidaActual p) {
+        UnityPlayer.UnitySendMessage("AndroidBridge", "OnLevelResponse", p.getTxt()+"|"+p.getNivell());
+    }
+
+    @Override
+    public void onReturnNoExistingLevel() {
+        UnityPlayer.UnitySendMessage("AndroidBridge", "OnLevelResponseNoExisting", "NO LEVEL");
     }
 }
