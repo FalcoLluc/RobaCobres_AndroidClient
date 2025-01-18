@@ -1069,6 +1069,7 @@ public class ServiceBBDD {
                     callback.onReturnLevel(partida);
                     Log.d("API_RESPONSE", "Partida Cargada ");
                 }else{
+                    Log.d("API_RESPONSE", "No Existe Partida");
                     callback.onReturnNoExistingLevel();
                 }
             }

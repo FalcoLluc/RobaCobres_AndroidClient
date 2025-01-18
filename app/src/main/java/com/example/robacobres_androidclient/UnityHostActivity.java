@@ -45,10 +45,12 @@ public class UnityHostActivity extends UnityPlayerActivity implements UnityCallb
     }
 
     //PARTIDA
-    public void sendSaveGame(String levelString,int level){
+    public void sendSaveGame(String levelString,int level,int cobreActual,int cobreTotal){
         PartidaActual p=new PartidaActual();
         p.setTxt(levelString);
         p.setNivell(level);
+        p.setCobreActual(cobreActual);
+        p.setCobreTotal(cobreTotal);
         // Call the Retrofit method to send data
         serviceREST.sendSave(p);
     }
@@ -71,11 +73,11 @@ public class UnityHostActivity extends UnityPlayerActivity implements UnityCallb
     @Override
     public void onReturnLevel(PartidaActual p) {
         //HO SEPARA
-        UnityPlayer.UnitySendMessage("AndroidBridge", "OnLevelResponse", p.getTxt()+"|"+p.getNivell());
+        UnityPlayer.UnitySendMessage("AndroidBridge", "OnLevelResponse", p.getTxt()+"|"+p.getNivell()+"|"+p.getCobreActual()+"|"+p.getCobreTotal());
     }
 
     @Override
     public void onReturnNoExistingLevel() {
-        UnityPlayer.UnitySendMessage("AndroidBridge", "OnLevelResponseNoExisting", "NO LEVEL");
+        UnityPlayer.UnitySendMessage("AndroidBridge", "OnLevelResponseNoExisting", "");
     }
 }
