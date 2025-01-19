@@ -73,7 +73,7 @@ public class MyCharacterAdapter extends RecyclerView.Adapter<MyCharacterAdapter.
         holder.txtPriceCha.setText(String.valueOf(g.getCost()));
 
         Glide.with(holder.icon.getContext())
-                .load("")
+                .load(g.getCharacter_url())
                 .into(holder.icon);
     }
 

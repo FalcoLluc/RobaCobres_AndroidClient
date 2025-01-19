@@ -110,7 +110,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             holder.txtPriceItem.setText(String.valueOf(character.getCost()));
 
             Glide.with(holder.icon.getContext())
-                    .load("")
+                    .load(character.getCharacter_url())
                     .into(holder.icon);
 
             holder.comprar.setOnClickListener(new OnClickListener() {
