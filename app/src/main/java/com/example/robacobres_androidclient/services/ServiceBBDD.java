@@ -59,8 +59,8 @@ public class ServiceBBDD {
 
         // Configurar Retrofit
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/RobaCobres/")
-                //.baseUrl("http://147.83.7.204/RobaCobres/") // LOCAL Base URL
+                //.baseUrl("http://10.0.2.2:8080/RobaCobres/")
+                .baseUrl("http://147.83.7.204/RobaCobres/") // LOCAL Base URL
                 .addConverterFactory(GsonConverterFactory.create())       // Conversor JSON
                 .client(client)                                           // Cliente OkHttp
                 .build();
